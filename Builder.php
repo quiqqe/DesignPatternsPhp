@@ -8,14 +8,15 @@ class Pizza
 
 abstract class PizzaBuilder
 {
-	// формальная "заготовка" пиццы.
+	// Формальная "заготовка" пиццы.
 	protected Pizza $pizza;
-	// при создании обеькта класса наследующего PizzaBuilder создается пицца.
+	// При создании обеькта класса наследующего PizzaBuilder создается пицца.
 	public function createNewPizza() 
 	{
 		$this->pizza = new Pizza();
 	}
-	
+
+	// Дать пицце название.
 	public function setPizzaName($name)
 	{
 		if (!empty($this->pizza)) {
@@ -52,6 +53,7 @@ abstract class PizzaBuilder
 
 class DodoPizzaBuilder extends PizzaBuilder 
 {
+	// Мы обязаны определить как будет создаваться тесто.
 	public function createDough(string $type)
 	{
 		$this->pizza->ingredients[] = 'Тесто с добавлением манки ' . $type;
@@ -69,6 +71,7 @@ class DodoPizzaCreator
 	{
 		$this->pizzaBuilder = new DodoPizzaBuilder();
 	}
+	// Создать пиццу 'Четырые сыра мазератти'
 	public function createFourMazerattiCheese() 
 	{
 		$this->pizzaBuilder->createNewPizza();
@@ -81,9 +84,11 @@ class DodoPizzaCreator
 		return $this->pizzaBuilder->bake();
 	}
 }
-
+// Создаем "Менеджера (повара) пдодо-пицц"
 $pizzaCreator = new DodoPizzaCreator();
+// Создаем пиццу 'Четырые сыра мазератти'
 $pizza = $pizzaCreator->createFourMazerattiCheese();
+// Смотрим результат.
 echo $pizza->name . PHP_EOL;
 var_dump($pizza->ingredients);
 echo "Приятного аппетита!";

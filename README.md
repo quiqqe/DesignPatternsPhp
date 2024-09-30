@@ -11,3 +11,5 @@
 ### Поведенческие:
 - Цепочка обязанностей (**ChainOfResponsibility**)
 - Шаблонный метод (**TemplateMethod**)
+
+  [Презентация по паттернам](https://github.com/quiqqe/DesignPatternsPhp/blob/main/Patterny_proektirovania_finally.pptx)
